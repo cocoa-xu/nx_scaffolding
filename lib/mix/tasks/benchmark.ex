@@ -13,7 +13,7 @@ defmodule Mix.Tasks.NxScaffolding.Benchmark do
                                         Default is `0`.
           --repeat=R                    Repeat each test `R` times.
                                         Default is `5`.
-          --time-unit                   Use time unit. [auto|us|ms|sec|min].
+          --time-unit                   Use time unit. [auto|ns|us|ms|sec|min].
                                         Default is `auto`.
           --data-types                  Comma separated data types.
                                         Default is `u8,f32,f64`.
@@ -80,6 +80,8 @@ defmodule Mix.Tasks.NxScaffolding.Benchmark do
 
       defp to_time_unit(nanosecond, unit) do
         case unit do
+          :ns ->
+            "#{nanosecond} ns"
           :us ->
             "#{Float.round(nanosecond / 1.0e3, 3)} µs"
           :ms ->
@@ -105,6 +107,10 @@ defmodule Mix.Tasks.NxScaffolding.Benchmark do
 
       defp use_proper_time_unit(nanosecond) when nanosecond > 1.0e3 do
         to_time_unit(nanosecond, :us)
+      end
+
+      defp use_proper_time_unit(nanosecond) do
+        to_time_unit(nanosecond, :ns)
       end
 
       defp do_benchmark(callback="Nx.dot/2", data_type, backend,
