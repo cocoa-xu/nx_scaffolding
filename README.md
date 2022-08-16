@@ -19,6 +19,13 @@ mix aaa.benchmark --help
 ```
 
 ## Installation
+```elixir
+def deps do
+  [
+    {:nx_scaffolding, "~> 0.1", github: "cocoa-xu/nx_scaffolding", runtime: false, only: [:dev, :test]}
+  ]
+end
+```
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
 by adding `nx_scaffolding` to your list of dependencies in `mix.exs`:
@@ -26,7 +33,7 @@ by adding `nx_scaffolding` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:nx_scaffolding, "~> 0.1.0"}
+    {:nx_scaffolding, "~> 0.1", runtime: false, only: [:dev, :test]}
   ]
 end
 ```
