@@ -1,6 +1,7 @@
 defmodule Mix.Tasks.NxScaffolding.Benchmark do
   defmacro __using__(_opts) do
     quote do
+      @requirements ["app.start"]
       @moduledoc """
       usage:
           $ mix nx_scaffolding.benchmark --backend BACKEND [OPTIONS]
